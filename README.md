@@ -1,4 +1,3 @@
-# EnquiryMethod
 package com.temenos.t24.api.hook.system
 /**
 *The EnquiryHook component allows access to routines for customising ENQUIRY.<br>
