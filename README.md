@@ -88,12 +88,28 @@ public class Enquiry {
     * The implementer is expected to generate a list of recordIds for use in the enquiry processing.<br>
     * Note: Some nofile enquiries exploit a trick of returning all required information inside the recordId, delimited with some value, for example '*', and then
     * extract the values from the recordId using the F(IELD) conversion in the enquiry.<br>
+
     * If an exception is thrown in the implementing class, then the exception message will be displayed on screen and no enquiry results will be displayed.
     * <br>
     * @param filterCriteria List<com.temenos.t24.api.complex.eb.enquiryhook.FilterCriteria> : The list of selection criteria entered by the user. In T24 terms, this comes from the common variables D.FIELDS, D.RANGE.AND.VALUE and D.LOGICAL.OPERANDS.<br>
     * @param enquiryContext com.temenos.t24.api.complex.eb.enquiryhook.EnquiryContext : Context variables for the enquiry interaction.<br>
     * @return List<String> : The list of recordIds.<br>
-    */
+    */  
+
+    is interface ma hum list of records id ko laka process karta hai
+    or ya call hoti hai selection stage enquiry pa or replace karti hai mamuli selection based record ko select statement ki t4 application sa
+    or is ka lia hum ss bnata hai or us ma sys.type R multi value group ka lia
+    or ya method ko hum nofile enquiry ka lia use karta hai or ss ma hum is routine ki type R rakhta hai phechana ka lia ka ya no file hai
+    or ya list of records ids ko use karta hai enquiry ma
+    ya nofile enquiry ya bhi karti hai ka tamam records ids jo wo return kar raha hai us recordsids ka anadar ka data bhi return karti hai "*" laga ka
+    matlab ids bhi return karti hia or uska aik aik ids ka data bhi matlab extract karti hai records from recordids using F(IELD) conversion
+    agar exception ati hai class ma to error bhi dagi screen pa or koi result display ni hoga
+
+    (2 parameter lati hai)
+    1: filterCriteria is ka andar list hogi jo user na filterCriteria ma di hogi single record bhi da sakta hai or ya in variables ma ajae ga data 
+       (D.FIELDS, D.RANGE.AND.VALUE and D.LOGICAL.OPERANDS ) jo user na dia hoga.
+    2: enquiryContext is ma context variable hota hai enquiry ka
+    
     public List<String> setIds(List<com.temenos.t24.api.complex.eb.enquiryhook.FilterCriteria> filterCriteria, com.temenos.t24.api.complex.eb.enquiryhook.EnquiryContext enquiryContext){}
 
     /**
