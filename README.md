@@ -79,22 +79,23 @@ public class Enquiry {
     */
     public void setRecord(String value, String currentId, TStructure currentRecord, List<com.temenos.t24.api.complex.eb.enquiryhook.FilterCriteria> filterCriteria, com.temenos.t24.api.complex.eb.enquiryhook.EnquiryContext enquiryContext){}
 
-    /**
-    * This interface enables the implementer to define the list of record Ids that the enquiry will process.<br>
-    * This interface is invoked during the record selection stage of running an enquiry, and replaces the usual record selection based on a select statement on a T24 application.
-    * <br/><b>T24 Details:</b> The EB.API hook used by this interface is SS.SYS.FIELD.NO.HOOK.
-    * The T24 field specifying this hook is the SYS.FIELD.NO in STANDARD.SELECTION (the SYS.TYPE must be 'R' in the associated multivalue group)<br>
-    * This interface is mainly intended to support NOFILE enquiry in T24. It supports the 'R' type routine specified in STANDARD.SELECTION for the nofile table.
-    * The implementer is expected to generate a list of recordIds for use in the enquiry processing.<br>
-    * Note: Some nofile enquiries exploit a trick of returning all required information inside the recordId, delimited with some value, for example '*', and then
-    * extract the values from the recordId using the F(IELD) conversion in the enquiry.<br>
 
-    * If an exception is thrown in the implementing class, then the exception message will be displayed on screen and no enquiry results will be displayed.
-    * <br>
-    * @param filterCriteria List<com.temenos.t24.api.complex.eb.enquiryhook.FilterCriteria> : The list of selection criteria entered by the user. In T24 terms, this comes from the common variables D.FIELDS, D.RANGE.AND.VALUE and D.LOGICAL.OPERANDS.<br>
-    * @param enquiryContext com.temenos.t24.api.complex.eb.enquiryhook.EnquiryContext : Context variables for the enquiry interaction.<br>
-    * @return List<String> : The list of recordIds.<br>
-    */  
+================================================================================================================================================
+    
+     This interface enables the implementer to define the list of record Ids that the enquiry will process.<br>
+     This interface is invoked during the record selection stage of running an enquiry, and replaces the usual record selection based on a select statement on a T24 application.
+     <br/><b>T24 Details:</b> The EB.API hook used by this interface is SS.SYS.FIELD.NO.HOOK.
+     The T24 field specifying this hook is the SYS.FIELD.NO in STANDARD.SELECTION (the SYS.TYPE must be 'R' in the associated multivalue group)<br>
+     This interface is mainly intended to support NOFILE enquiry in T24. It supports the 'R' type routine specified in STANDARD.SELECTION for the nofile table.
+     The implementer is expected to generate a list of recordIds for use in the enquiry processing.<br>
+     Note: Some nofile enquiries exploit a trick of returning all required information inside the recordId, delimited with some value, for example '*', and then
+     extract the values from the recordId using the F(IELD) conversion in the enquiry.<br>
+     If an exception is thrown in the implementing class, then the exception message will be displayed on screen and no enquiry results will be displayed.
+     
+     @param filterCriteria List<com.temenos.t24.api.complex.eb.enquiryhook.FilterCriteria> : The list of selection criteria entered by the user. In T24 terms, this comes from the common variables D.FIELDS, D.RANGE.AND.VALUE and D.LOGICAL.OPERANDS.<br>
+     @param enquiryContext com.temenos.t24.api.complex.eb.enquiryhook.EnquiryContext : Context variables for the enquiry interaction.<br>
+     @return List<String> : The list of recordIds.<br>
+     
 
     is interface ma hum list of records id ko laka process karta hai
     or ya call hoti hai selection stage enquiry pa or replace karti hai mamuli selection based record ko select statement ki t4 application sa
@@ -109,9 +110,12 @@ public class Enquiry {
     1: filterCriteria is ka andar list hogi jo user na filterCriteria ma di hogi single record bhi da sakta hai or ya in variables ma ajae ga data 
        (D.FIELDS, D.RANGE.AND.VALUE and D.LOGICAL.OPERANDS ) jo user na dia hoga.
     2: enquiryContext is ma context variable hota hai enquiry ka
+
+    Return karta hai list of recordsids
     
     public List<String> setIds(List<com.temenos.t24.api.complex.eb.enquiryhook.FilterCriteria> filterCriteria, com.temenos.t24.api.complex.eb.enquiryhook.EnquiryContext enquiryContext){}
 
+===============================================================================================================================================
     /**
     * This interface enables the implementer to set the value of an element displayed in the enquiry results programatically.<br>
     * This interface is invoked during calculation of each field's value, in the order it is specified in the list of CONVERSION fields in the enquiry definition.
