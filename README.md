@@ -4,22 +4,45 @@ package com.temenos.t24.api.hook.system
 * There are hooks for BUILD.ROUTINE, CONVERSION and for NOFILE enquiries.
 */
 public class Enquiry {
-    /**
-    * This interface enables the implementer to set the selection criteria used by the enquiry engine to select records.<br>
-    * This interface is invoked after the user has entered their choices in the selection screen, so the implementor has the opportunity to override user choices.
-    * This interface provides access to the parameter usually named 'ENQ.DATA' in the enquiry build routine.
-    * Note that the FIXED.SELECTION defined for the enquiry is executed before this interface, the filter criteria returned by this routine will
-    * operate on the subset of records returned by the FIXED.SELECTION. This is standard T24 enquiry build routine behaviour.<br>
-    * <br/><b>T24 Details:</b>The EB.API hook used by this interface is ENQUIRY.BUILD.ROUTINE.HOOK.
-    * The T24 field specifying this hook is the BUILD.ROUTINE field in ENQUIRY.<br>
-    * If an exception is thrown in the implementing class, the exception message will be displayed on screen and no enquiry results will be displayed.
-    * <br>
-    * @param filterCriteria List<com.temenos.t24.api.complex.eb.enquiryhook.FilterCriteria> : The list of FilterCriteria as entered by the user. (In T24 terms, this is ENQ.DATA<2 ... 4>)<br>
-    * @param enquiryContext com.temenos.t24.api.complex.eb.enquiryhook.EnquiryContext : Context variables for the enquiry interaction.<br>
-    * @return List<com.temenos.t24.api.complex.eb.enquiryhook.FilterCriteria> : A new list of filter criteria to be applied during record selection.<br>
-    */
+
+================================================================================================
+    
+     This interface enables the implementer to set the selection criteria used by the enquiry engine to select records.<br>
+     This interface is invoked after the user has entered their choices in the selection screen, so the implementor has the opportunity to override user choices.
+     This interface provides access to the parameter usually named 'ENQ.DATA' in the enquiry build routine.
+     Note that the FIXED.SELECTION defined for the enquiry is executed before this interface, the filter criteria returned by this routine will
+     operate on the subset of records returned by the FIXED.SELECTION. This is standard T24 enquiry build routine behaviour.<br>
+     <br/><b>T24 Details:</b>The EB.API hook used by this interface is ENQUIRY.BUILD.ROUTINE.HOOK.
+     The T24 field specifying this hook is the BUILD.ROUTINE field in ENQUIRY.<br>
+     If an exception is thrown in the implementing class, the exception message will be displayed on screen and no enquiry results will be displayed.
+     <br>
+     @param filterCriteria List<com.temenos.t24.api.complex.eb.enquiryhook.FilterCriteria> : The list of FilterCriteria as entered by the user. (In T24 terms, this is      ENQ.DATA<2 ... 4>)<br>
+     @param enquiryContext com.temenos.t24.api.complex.eb.enquiryhook.EnquiryContext : Context variables for the enquiry interaction.<br>
+     @return List<com.temenos.t24.api.complex.eb.enquiryhook.FilterCriteria> : A new list of filter criteria to be applied during record selection.<br>
+    
+
+    ya method selection criteria kia madad sa enquiry ka records ko chalata hai
+    or ya method jab call hota hai jab hum selection criteria ka andar data dal chuka hota hai  
+    ya method build routine pa lagta hai or selection criteria ka andar ka record hum ENQ.DATA sa niaklata hai infobasic sa
+    selection criteria ka andar select howa wa data ka against hi ya data return karta hai or ya standard hai build routine ka t4 ma
+    or ya sirf build routine pa hi lagta hai method
+    agar exception ati hai class ma to error bhi dagi screen pa or koi result display ni hoga
+   
+    (2 parameter lati hai)
+    1: filterCriteria is ka andar list hogi jo user na filterCriteria ma di hogi single record 
+        bhi da sakta hai or ya in variables ma ajae ga data 
+       (ENQ.DATA<2 ... 4>) jo user na dia hoga t24 ki zaban ma
+    2: enquiryContext is ma context variable hota hai enquiry ka
+
+    Return karta hai list of filterCriteria
+
+
+
+
+
     public List<com.temenos.t24.api.complex.eb.enquiryhook.FilterCriteria> setFilterCriteria(List<com.temenos.t24.api.complex.eb.enquiryhook.FilterCriteria> filterCriteria, com.temenos.t24.api.complex.eb.enquiryhook.EnquiryContext enquiryContext){}
 
+=======================================================================================================
     /**
     * This interface enables the implementer to set the selection criteria using the values of the current record from an input screen.<br>
     * This interface is invoked when the user activates a dropdown list to get the available values for the field to which the dropdown enquiry is attached.
@@ -80,7 +103,7 @@ public class Enquiry {
     public void setRecord(String value, String currentId, TStructure currentRecord, List<com.temenos.t24.api.complex.eb.enquiryhook.FilterCriteria> filterCriteria, com.temenos.t24.api.complex.eb.enquiryhook.EnquiryContext enquiryContext){}
 
 
-====================================================================================
+================================================================================================================================================
     
      This interface enables the implementer to define the list of record Ids that the enquiry will process.<br>
      This interface is invoked during the record selection stage of running an enquiry, and replaces the usual record selection based on a select statement on a T24 application.
@@ -126,7 +149,7 @@ public class Enquiry {
 
     public List<String> setIds(List<com.temenos.t24.api.complex.eb.enquiryhook.FilterCriteria> filterCriteria, com.temenos.t24.api.complex.eb.enquiryhook.EnquiryContext enquiryContext){}
 
-==========================================================================================
+===============================================================================================================================================
     /**
     * This interface enables the implementer to set the value of an element displayed in the enquiry results programatically.<br>
     * This interface is invoked during calculation of each field's value, in the order it is specified in the list of CONVERSION fields in the enquiry definition.
